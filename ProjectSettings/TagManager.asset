@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround_Layer
+    uniqueID: 2971785891
+    locked: 0
+  - name: Ground_Layer
+    uniqueID: 2458919531
+    locked: 0
+  - name: Fish_Layer
+    uniqueID: 1059767105
+    locked: 0
