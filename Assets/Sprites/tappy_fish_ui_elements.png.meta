@@ -313,7 +313,7 @@ TextureImporter:
         serializedVersion: 2
         x: 2005
         y: 943
-        width: 287
+        width: 281
         height: 213
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -507,7 +507,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bronz: -484907167
+      tappy_fish_ui_elements_17: -307906860
       tappy_fish_ui_elements_23: 1070389982
       Metal: -750189155
       tappy_fish_ui_elements_10: 67624155
@@ -532,7 +532,7 @@ TextureImporter:
       tappy_fish_ui_elements_26: 972107685
       Ground: -962437519
       GetReady: 662152782
-      tappy_fish_ui_elements_17: -307906860
+      Bronz: -484907167
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
