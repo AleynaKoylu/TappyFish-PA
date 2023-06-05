@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static int gameScorre;
     public Fish_Script fish_Script;
     
+    
     private void Awake()
     {
         buttonleft = Camera.main.ScreenToViewportPoint(new Vector2(0, 0));
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         GameOverPanel.SetActive(true);
         gameScorre = fish_Script.GetScore();
         score.SetActive(false);
+        
       
     }
     public void Restart()

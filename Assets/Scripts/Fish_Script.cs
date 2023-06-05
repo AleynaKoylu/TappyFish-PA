@@ -22,6 +22,7 @@ public class Fish_Script : MonoBehaviour
     public TextMeshProUGUI panelscoretxt,highscoretxt;
     public ObsteclaSpawn_Script ObsteclaSpawn_Script;
     public GameObject neww;
+    [SerializeField] AudioSource swim, hit, point;
     
     void Start()
     {
@@ -55,6 +56,7 @@ public class Fish_Script : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Skor"))
         {
+            point.Play();
             GetScore();
             SetScore();
             ScoreTxt.text = puan.ToString();
@@ -69,9 +71,12 @@ public class Fish_Script : MonoBehaviour
             Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
 
         }
-        else if (collision.gameObject.CompareTag("Obstecla"))
+        else if (collision.gameObject.CompareTag("Obstecla")&& GameManager.GameOver==false)
         {
             gameManager.GameOverr();
+            GameOver();
+            fishdiedeffect();
+           
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -83,6 +88,7 @@ public class Fish_Script : MonoBehaviour
             {
                 gameManager.GameOverr();
                 GameOver();
+                fishdiedeffect();
             }
             else
             {
@@ -104,6 +110,7 @@ public class Fish_Script : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)&&GameManager.GameOver==false)
         {
+            swim.Play();
             if (GameManager.gameStartedd == false)
             {
                 fish_rb.gravityScale = 4f;
@@ -142,8 +149,13 @@ public class Fish_Script : MonoBehaviour
         
 
     }
+    void fishdiedeffect()
+    {
+        hit.Play();
+    }
     void GameOver()
     {
+        
         TouchGround = true;
         transform.rotation = Quaternion.Euler(0, 0, -90);
         sp.sprite = FishDiedSprite;
