@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstecla
   - Skor
+  - Ground
   layers:
   - Default
   - TransparentFX

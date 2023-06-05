@@ -18,7 +18,10 @@ public class ObsteclaSpawn_Script : MonoBehaviour
     {
         while (true)
         {
-            InstantiateObstacles();
+            if (GameManager.GameOver == false)
+            {
+                InstantiateObstacles();
+            }
             yield return new WaitForSeconds(3.5f);
         }
     }

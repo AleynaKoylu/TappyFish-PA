@@ -19,8 +19,10 @@ public class LeftMovementObstecla_Script : MonoBehaviour
     {
         while (true)
         {
-            
-            transform.position = new Vector2(transform.position.x - ground_speed * Time.deltaTime, transform.position.y);
+            if (GameManager.GameOver == false)
+            {
+                transform.position = new Vector2(transform.position.x - ground_speed * Time.deltaTime, transform.position.y);
+            }
 
             destroyy();
             yield return null;
