@@ -6,10 +6,11 @@ public class Fish_Script : MonoBehaviour
 {
     Rigidbody2D fish_rb;
     [SerializeField]
-    float fish_speed=5f;
+    float fish_speed=2f;
     int angel;
     int max_angel = 20;
     int min_angel = -60;
+    int puan = 0;
 
     void Start()
     {
@@ -18,15 +19,36 @@ public class Fish_Script : MonoBehaviour
        
     }
 
-    
+   
     IEnumerator Fish_Movement()
     {
         while (true)
         {
-            fish_tap();
-            fish_rotate();
+            fish_tap(); 
             yield return null;
         }
+    }
+    private void FixedUpdate()
+    {
+        fish_rotate();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Skor"))
+        {
+            GetScore();
+            SetScore();
+            Debug.Log(puan);
+
+        }
+    }
+    void GetScore()
+    {
+        puan = puan + 1;
+    }
+    int SetScore()
+    {
+        return puan;
     }
     void fish_tap()
     {
