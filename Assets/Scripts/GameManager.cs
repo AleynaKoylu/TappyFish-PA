@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public static bool GameOver;
     public GameObject GameOverPanel;
     public static bool gameStartedd;
+    public GameObject startPanel;
+    public GameObject score;
+    public static int gameScorre;
+    public Fish_Script fish_Script;
+    
     private void Awake()
     {
         buttonleft = Camera.main.ScreenToViewportPoint(new Vector2(0, 0));
@@ -17,11 +22,10 @@ public class GameManager : MonoBehaviour
     public void GameOverr()
     {
         GameOver = true;
-        if (GameOver == true)
-        {
-            GameOverPanel.SetActive(true);
-
-        }
+        GameOverPanel.SetActive(true);
+        gameScorre = fish_Script.GetScore();
+        score.SetActive(false);
+      
     }
     public void Restart()
     {
@@ -34,6 +38,7 @@ public class GameManager : MonoBehaviour
     public void GameStarted()
     {
         gameStartedd = true;
+        startPanel.SetActive(false);
     }
     void Update()
     {

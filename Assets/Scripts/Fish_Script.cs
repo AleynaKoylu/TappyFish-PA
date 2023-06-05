@@ -21,6 +21,8 @@ public class Fish_Script : MonoBehaviour
     int highscore;
     public TextMeshProUGUI panelscoretxt,highscoretxt;
     public ObsteclaSpawn_Script ObsteclaSpawn_Script;
+    public GameObject neww;
+    
     void Start()
     {
         fish_rb = GetComponent<Rigidbody2D>();
@@ -59,6 +61,7 @@ public class Fish_Script : MonoBehaviour
             panelscoretxt.text = puan.ToString();
             if (puan > highscore)
             {
+                neww.SetActive(true);
                 highscore = puan;
                 highscoretxt.text = puan.ToString();
                 PlayerPrefs.SetInt("highscore", highscore);
@@ -89,11 +92,11 @@ public class Fish_Script : MonoBehaviour
         }
       
     }
-    void GetScore()
+   public void SetScore()
     {
         puan = puan + 1;
     }
-    int SetScore()
+    public int GetScore()
     {
         return puan;
     }
@@ -109,7 +112,7 @@ public class Fish_Script : MonoBehaviour
                 gameManager.GameStarted();
             }
             else
-            {
+            {   
                 fish_rb.velocity = Vector2.zero;
                 fish_rb.velocity = new Vector2(fish_rb.velocity.x, fish_speed);
             }
