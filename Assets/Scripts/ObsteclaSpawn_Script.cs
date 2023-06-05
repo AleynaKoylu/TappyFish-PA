@@ -11,14 +11,14 @@ public class ObsteclaSpawn_Script : MonoBehaviour
     void Start()
     {
        
-        StartCoroutine(Obstaclecl());   
+       StartCoroutine(Obstaclecl());   
     }
 
-    IEnumerator Obstaclecl()
+    public IEnumerator Obstaclecl()
     {
         while (true)
         {
-            if (GameManager.GameOver == false)
+            if (GameManager.GameOver == false&& GameManager.gameStartedd==true)
             {
                 InstantiateObstacles();
             }

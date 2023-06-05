@@ -18,12 +18,20 @@ public class Fish_Script : MonoBehaviour
     public Sprite FishDiedSprite;
     SpriteRenderer sp;
     Animator anm;
+    int highscore;
+    public TextMeshProUGUI panelscoretxt,highscoretxt;
+    public ObsteclaSpawn_Script ObsteclaSpawn_Script;
     void Start()
     {
         fish_rb = GetComponent<Rigidbody2D>();
+        fish_rb.gravityScale = 0;
+       
         sp = GetComponent<SpriteRenderer>();
         anm = GetComponent<Animator>();
         StartCoroutine(Fish_Movement());
+        
+        highscore = PlayerPrefs.GetInt("highscore");
+        highscoretxt.text = highscore.ToString();
         
        
     }
@@ -48,6 +56,13 @@ public class Fish_Script : MonoBehaviour
             GetScore();
             SetScore();
             ScoreTxt.text = puan.ToString();
+            panelscoretxt.text = puan.ToString();
+            if (puan > highscore)
+            {
+                highscore = puan;
+                highscoretxt.text = puan.ToString();
+                PlayerPrefs.SetInt("highscore", highscore);
+            }
             Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
 
         }
@@ -86,8 +101,19 @@ public class Fish_Script : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)&&GameManager.GameOver==false)
         {
-            fish_rb.velocity = Vector2.zero;
-            fish_rb.velocity = new Vector2(fish_rb.velocity.x, fish_speed);
+            if (GameManager.gameStartedd == false)
+            {
+                fish_rb.gravityScale = 4f;
+                fish_rb.velocity = Vector2.zero;
+                fish_rb.velocity = new Vector2(fish_rb.velocity.x, fish_speed);
+                gameManager.GameStarted();
+            }
+            else
+            {
+                fish_rb.velocity = Vector2.zero;
+                fish_rb.velocity = new Vector2(fish_rb.velocity.x, fish_speed);
+            }
+           
         }
     }
     void fish_rotate()
